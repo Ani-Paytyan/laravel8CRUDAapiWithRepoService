@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,19 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//    return $request->user();
+
 });
+
+Route::get('/greeting', function () {
+    return 'Hello World';
+});
+
+//Route::post('/post', [\App\Http\Controllers\PostController::class, 'store']);
+//Protecting Routes
+
+Route::post('/post', [\App\Http\Controllers\PostController::class, 'store']);
+Route::put('/post/{id}', [\App\Http\Controllers\PostController::class, 'update']);
+Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show']);
+Route::delete('/post/{id}', [\App\Http\Controllers\PostController::class, 'destroy']);
+
